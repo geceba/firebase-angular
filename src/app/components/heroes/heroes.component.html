@@ -19,15 +19,18 @@
             <th>#</th>
             <th>Nombre</th>
             <th>Casa</th>
-            <th>Opciones</th>
+            <th class="text-right">Opciones</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+          <tr *ngFor="let k of heroes | keys; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ heroes[k].nombre }}</td>
+            <td>{{ heroes[k].casa }}</td>
+            <td class="text-right w-120">
+              <button [routerLink]="['/heroe', k]" class="btn btn-outline-success">Editar</button>
+              <button (click)="borrarHeroe(k)" class="btn btn-outline-danger">Eliminar</button>
+            </td>
           </tr>
         </tbody>
       </table>
